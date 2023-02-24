@@ -41,12 +41,12 @@ int main()
     else if (input == 3)
     {
         cakru.input("Cakru", 10, 2, 2, 0, 0);
-        musuh.input("Musuh", 4, 3, 3, -5 + (rand() % 11), -5 + (rand() % 11));
+        musuh.input("Musuh", 4, 3, 2, -5 + (rand() % 11), -5 + (rand() % 11));
     }
     else if (input == 4)
     {
         cakru.input("Cakru", 10, 2, 2, 0, 0);
-        musuh.input("Musuh", 4, 4, 3, -5 + (rand() % 11), -5 + (rand() % 11));
+        musuh.input("Musuh", 4, 3, 3, -5 + (rand() % 11), -5 + (rand() % 11));
     }
 
     while (cakru.isDead() == false)
