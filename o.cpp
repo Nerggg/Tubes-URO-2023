@@ -19,7 +19,8 @@ class ship {
             bool isDead();
             void takeDamage(int);
 };
-int input;
+void printMap(int, int, int, int);
+int input, killCount;
 int main()
 {
     srand(time(0));
@@ -31,6 +32,7 @@ int main()
         system("cls");
         cakru.updateDist(musuh.x, musuh.y);
         musuh.updateDist(cakru.x, cakru.y);
+        printMap(cakru.x, cakru.y, musuh.x, musuh.y);
         cakru.output();
         cout << endl;
         musuh.output();
@@ -102,6 +104,7 @@ int main()
             system("pause");
         }
     }
+    cout << "Permainan bagus!" << endl;
 }
 
 void ship::input(string n, int h, int d, int r, int posX, int posY)
@@ -166,4 +169,27 @@ void ship::updateDist(int xEnemy, int yEnemy)
 void ship::takeDamage(int damage)
 {
     health-=damage;
+}
+
+void printMap(int xCakru, int yCakru, int xMusuh, int yMusuh)
+{
+    for (int i = 5; i >= -5; i--)
+    {
+        for (int j = -5; j <= 5; j++)
+        {
+            if (xCakru == j && yCakru == i)
+            {
+                cout << "C";
+            }
+            else if (xMusuh == j && yMusuh == i)
+            {
+                cout << "M";
+            }
+            else
+            {
+                cout << ".";
+            }
+        }
+        cout << endl;
+    }
 }
