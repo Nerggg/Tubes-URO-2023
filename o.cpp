@@ -27,6 +27,7 @@ int main()
     ship cakru, musuh;
     cout << "Pilih tingkat kesulitan" << endl;
     cout << "[1] Mudah\n[2] Normal\n[3] Sulit\n[4] Sulit Banget\n";
+    cin >> input;
     if (input == 1)
     {
         cakru.input("Cakru", 10, 2, 2, 0, 0);
