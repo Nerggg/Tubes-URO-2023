@@ -5,6 +5,7 @@
 using namespace std;
 
 // Membuat class ship dengan atribut name, health, damage, range, posisi dalam x dan y.
+
 class ship {
     private:
         string name;
@@ -26,12 +27,14 @@ int input, diff, killCount = 0;
 int main()
 {   // Menginisialisasi nilai "srand" (sebuah fungsi dalam library "cstdlib") dengan nilai waktu saat ini menggunakan "time(0)". Ini digunakan agar fungsi "rand" pada program dapat menghasilkan nilai acak yang berbeda setiap kali program dijalankan.
     srand(time(0));
+
     ship cakru, musuh; // Membuat objek "cakru" dan "musuh" dari kelas "ship"
     cout << "Pilih tingkat kesulitan" << endl;
     cout << "[1] Mudah\n[2] Normal\n[3] Sulit\n[4] Sulit Banget\n";
     cin >> diff; // Input tingkat kesulitan
     
     // Isi semua data objek berdasarkan tingkat kesulitan
+
     if (diff == 1)
     {
         cakru.input("Cakru", 10, 2, 2, 0, 0);
@@ -61,6 +64,7 @@ int main()
         musuh.updateDist(cakru.x, cakru.y); // Update posisi musuh
         
         // Print map sederhana
+
         printMap(cakru.x, cakru.y, musuh.x, musuh.y);
         cakru.output();
         cout << endl;
@@ -68,6 +72,7 @@ int main()
         cout << endl;
         cout << "Sekarang adalah giliran Anda. Apa yang ingin Anda lakukan?" << endl;
         cout << "[1] Bergerak maju\n[2] Bergerak mundur\n[3] Bergerak ke kanan\n[4] Bergerak ke kiri\n[5] Serang musuh\n[6] Diam di tempat\n";
+
         cin >> input;   // Input action yang akan dilakukan cakru
         switch (input)  // Lakukan action sesuai input action
         {
@@ -85,17 +90,21 @@ int main()
                 break;
             case 5: // Bila dipilih 5, maka cakru akan menyerang
                 if (abs(cakru.xDist) <= 2 && abs(cakru.yDist) <= 2) // Apabila posisi terhadap kapal musuh sesuai range, maka serangan kena
+
                 {
                     cout << "Serangan kena!" << endl;
                     musuh.takeDamage(cakru.damage);
                     system("pause");
                 }
+
                 else    // apabila posisi cakru terhadap kapal musuh tidak sesuai range, maka serangan tidak kena.
+
                 {
                     cout << "Yah serangan tidak kena!" << endl;
                     system("pause");
                 }
                 break;
+
             case 6: // Bila dipilih 6, cakru tidak melakukan apa apa
                 break;
         }
@@ -113,31 +122,40 @@ int main()
                 system("pause");
             }
             else if (musuh.xDist > musuh.range) // Jika posisi horizontal musuh belum sesuai dengan rangenya, maka musuh akan bergerak secara horizontal
+
             {
                 musuh.right();
                 cout << "Musuh bergerak ke kanan" << endl;
                 system("pause");
             }
+
             else if (musuh.xDist < -1*musuh.range)  // Jika posisi horizontal musuh belum sesuai dengan rangenya, maka musuh akan bergerak secara horizontal
+
             {
                 musuh.left();
                 cout << "Musuh bergerak ke kiri" << endl;
                 system("pause");
             }
+
             else if (musuh.yDist > musuh.range) // Jika posisi vertikal musuh belum sesuai dengan rangenya, maka musuh akan bergerak secara vertikal
+
             {
                 musuh.forward();
                 cout << "Musuh bergerak maju" << endl;
                 system("pause");
             }
+
             else if (musuh.yDist < -1*musuh.range)  // Jika posisi vertikal musuh belum sesuai dengan rangenya, maka musuh akan bergerak secara vertikal
+
             {
                 musuh.backward();
                 cout << "Musuh bergerak mundur" << endl;
                 system("pause");
             }
         }
+
         else    // Jika musuh pertama sudah hancur, maka generate musuh selanjutnya dan tambahkan kill count
+
         {
             cout << "Selamat! Kapal musuh telah hancur!" << endl;
             cout << "Oh tidak! Kapal musuh datang lagi!" << endl;
@@ -161,13 +179,16 @@ int main()
             system("pause");
         }
     }
+
     // Keluar dari loop saat kapal cakru sudah hancur, dan tampilkan kill count-nya
+
     cout << "Yah kapal Anda hancur!" << endl;
     cout << "Permainan bagus!" << endl;
     cout << "Total kapal musuh yang dihancurkan: " << killCount << endl;
 }
 
 // Mengisi nilai atribut kapal, seperti nama, kesehatan, serangan, jarak serangan, dan posisi.
+
 void ship::input(string n, int h, int d, int r, int posX, int posY)
 {
     name = n;
@@ -215,6 +236,7 @@ void ship::left()
 }
 
 // Mengecek apakah kapal sudah mati atau belum dengan melihat jumlah health, jika health <= 0 maka True.
+
 bool ship::isDead()
 {
     if (health <=0)
@@ -228,6 +250,7 @@ bool ship::isDead()
 }
 
 // Menghitung jarak terhadap enemy
+
 void ship::updateDist(int xEnemy, int yEnemy)
 {
     xDist = xEnemy - x;
@@ -235,12 +258,14 @@ void ship::updateDist(int xEnemy, int yEnemy)
 }
 
 // Mengurangi health sebesar jumlah serangan apabila serangan kena
+
 void ship::takeDamage(int damage)
 {
     health-=damage;
 }
 
 // Menampilkan virtual map sederhana
+
 void printMap(int xCakru, int yCakru, int xMusuh, int yMusuh)
 {
     for (int i = 5; i >= -5; i--)
