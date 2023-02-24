@@ -25,8 +25,29 @@ int main()
 {
     srand(time(0));
     ship cakru, musuh;
-    cakru.input("Cakru", 10, 2, 2, 0, 0);
-    musuh.input("Musuh", 4, 1, 2, -5 + (rand() % 11), -5 + (rand() % 11));
+    cout << "Pilih tingkat kesulitan" << endl;
+    cout << "[1] Mudah\n[2] Normal\n[3] Sulit\n[4] Sulit Banget\n";
+    if (input == 1)
+    {
+        cakru.input("Cakru", 10, 2, 2, 0, 0);
+        musuh.input("Musuh", 4, 1, 2, -5 + (rand() % 11), -5 + (rand() % 11));       
+    }
+    else if (input == 2)
+    {
+        cakru.input("Cakru", 10, 2, 2, 0, 0);
+        musuh.input("Musuh", 4, 2, 2, -5 + (rand() % 11), -5 + (rand() % 11));
+    }
+    else if (input == 3)
+    {
+        cakru.input("Cakru", 10, 2, 2, 0, 0);
+        musuh.input("Musuh", 4, 3, 3, -5 + (rand() % 11), -5 + (rand() % 11));
+    }
+    else if (input == 4)
+    {
+        cakru.input("Cakru", 10, 2, 2, 0, 0);
+        musuh.input("Musuh", 4, 4, 3, -5 + (rand() % 11), -5 + (rand() % 11));
+    }
+
     while (cakru.isDead() == false)
     {
         system("cls");
@@ -72,6 +93,8 @@ int main()
         }
         cakru.updateDist(musuh.x, musuh.y);
         musuh.updateDist(cakru.x, cakru.y);
+        if (musuh.isDead() == false)
+        {
         cout << "Sekarang adalah giliran musuh" << endl;
         if (abs(musuh.xDist) <= 2 && abs(musuh.yDist) <= 2)
         {
@@ -103,8 +126,19 @@ int main()
             cout << "Musuh bergerak mundur" << endl;
             system("pause");
         }
+        }
+        else
+        {
+            cout << "Selamat! Kapal musuh telah hancur!" << endl;
+            cout << "Oh tidak! Kapal musuh datang lagi!" << endl;
+            killCount++;
+            musuh.input("Musuh", 4, 1, 2, -5 + (rand() % 11), -5 + (rand() % 11));
+            system("pause");
+        }
     }
+    cout << "Yah kapal Anda hancur!" << endl;
     cout << "Permainan bagus!" << endl;
+    cout << "Total kapal musuh yang dihancurkan: " << killCount << endl;
 }
 
 void ship::input(string n, int h, int d, int r, int posX, int posY)
