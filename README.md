@@ -64,7 +64,10 @@ Program ini berisi permainan pertempuran kapal yang dibuat untuk pemenuhan tugas
     >- Menambahkan fitur penampilan peta
     >- Membuat dokumentasi
     >- Menambahkan komentar pada program
+    >- Membantu pembuatan README.md
 
 - Albert Ghazaly (19622293)
     >- Membuat fitur pembatasan pergerakan kapal agar tidak keluar dari jangkauan map
+    >- Perbaikan bug dan optimasi kode
+    >- Membantu pembuatan dokumentasi
     >- Membuat README.md
