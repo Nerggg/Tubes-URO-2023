@@ -25,6 +25,26 @@ class ship {
 };
 void printMap(int, int, int, int);
 int input, diff, killCount = 0;
+int move(int x , int y)
+{
+    int mov;
+    cin >> mov;
+    if (x == 5 && mov == 3) {
+        cout << "Kapal sudah ada diujung peta!"<<endl;
+        return move (x,y);
+    } else if (x == -5 && mov == 4) {
+        cout << "Kapal sudah ada diujung peta!"<<endl;
+        return move (x,y);
+    } else if (y == 5 && mov == 1){
+        cout << "Kapal sudah ada diujung peta!"<<endl;
+        return move (x,y);
+    } else if (y==-5 && mov == 2){
+        cout << "Kapal sudah ada diujung peta!"<<endl;
+        return move (x,y);
+    } else {
+        return mov;
+    }
+}
 int main()
 {   // Menginisialisasi nilai "srand" (sebuah fungsi dalam library "cstdlib") dengan nilai waktu saat ini menggunakan "time(0)". Ini digunakan agar fungsi "rand" pada program dapat menghasilkan nilai acak yang berbeda setiap kali program dijalankan.
     srand(time(0));
@@ -73,7 +93,7 @@ int main()
         cout << endl;
         cout << "Sekarang adalah giliran Anda. Apa yang ingin Anda lakukan?" << endl;
         cout << "[1] Bergerak maju\n[2] Bergerak mundur\n[3] Bergerak ke kanan\n[4] Bergerak ke kiri\n[5] Serang musuh\n[6] Diam di tempat\n";
-        cin >> input;
+        input = move(cakru.x, cakru.y);
         while (cakru.isCrash(input,musuh) == true)
         {
             system("cls");
@@ -219,7 +239,7 @@ void ship::output()
     cout << "Nama Kapal: " << name << endl;
     cout << "Nyawa: " << health << endl;
     cout << "Damage: " << damage << endl;
-    cout << "Jarak Serangan: " << range << endl;
+    cout << "Jarak Serangan: Radius " << range << "x" << range << endl;
     cout << "Posisi: " << "(" << x << "," << y << ")" << endl;
     cout << "Jarak dengan Musuh: " << "(" << xDist << "," << yDist << ")" << endl;
 
