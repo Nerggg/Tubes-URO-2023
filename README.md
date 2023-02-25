@@ -51,6 +51,8 @@ Program ini berisi permainan pertempuran kapal yang dibuat untuk pemenuhan tugas
 - Firly Hafiz Syahreza (16322002)
     >- Membuat fitur kapal tidak bisa menabrak kapal musuh
     >- Perbaikan bug dan optimasi kode
+    >- Membantu pembuatan komentar program
+    >- Membantu pembuatan dokumentasi
 
 - Ikhwan Al Hakim (19622278)
     >- Membuat class kapal
@@ -58,6 +60,7 @@ Program ini berisi permainan pertempuran kapal yang dibuat untuk pemenuhan tugas
     >- Menambahkan algoritma serang dan bergerak
     >- Menambahkan fitur pemilihan tingkat kesulitan
     >- Perbaikan bug dan optimasi kode
+    >- Menyelesaikan konflik dari commit
     >- Membantu pembuatan dokumentasi
 
 - Rizqika Mulia Pratama (19622258)
