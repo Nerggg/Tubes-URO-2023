@@ -24,29 +24,12 @@ class ship {
         void takeDamage(int);
 };
 void printMap(int, int, int, int);
+int move(int, int);
 int input, diff, killCount = 0;
-int move(int x , int y)
-{
-    int mov;
-    cin >> mov;
-    if (x == 5 && mov == 3) {
-        cout << "Kapal sudah ada diujung peta!"<<endl;
-        return move (x,y);
-    } else if (x == -5 && mov == 4) {
-        cout << "Kapal sudah ada diujung peta!"<<endl;
-        return move (x,y);
-    } else if (y == 5 && mov == 1){
-        cout << "Kapal sudah ada diujung peta!"<<endl;
-        return move (x,y);
-    } else if (y==-5 && mov == 2){
-        cout << "Kapal sudah ada diujung peta!"<<endl;
-        return move (x,y);
-    } else {
-        return mov;
-    }
-}
+
 int main()
-{   // Menginisialisasi nilai "srand" (sebuah fungsi dalam library "cstdlib") dengan nilai waktu saat ini menggunakan "time(0)". Ini digunakan agar fungsi "rand" pada program dapat menghasilkan nilai acak yang berbeda setiap kali program dijalankan.
+{   system("cls");
+    // Menginisialisasi nilai "srand" (sebuah fungsi dalam library "cstdlib") dengan nilai waktu saat ini menggunakan "time(0)". Ini digunakan agar fungsi "rand" pada program dapat menghasilkan nilai acak yang berbeda setiap kali program dijalankan.
     srand(time(0));
 
     ship cakru, musuh; // Membuat objek "cakru" dan "musuh" dari kelas "ship"
@@ -356,5 +339,26 @@ void printMap(int xCakru, int yCakru, int xMusuh, int yMusuh)
             }
         }
         cout << endl;
+    }
+}
+
+int move(int x , int y)
+{
+    int mov;
+    cin >> mov;
+    if (x == 5 && mov == 3) {
+        cout << "Kapal sudah ada diujung peta!"<<endl;
+        return move (x,y);
+    } else if (x == -5 && mov == 4) {
+        cout << "Kapal sudah ada diujung peta!"<<endl;
+        return move (x,y);
+    } else if (y == 5 && mov == 1){
+        cout << "Kapal sudah ada diujung peta!"<<endl;
+        return move (x,y);
+    } else if (y==-5 && mov == 2){
+        cout << "Kapal sudah ada diujung peta!"<<endl;
+        return move (x,y);
+    } else {
+        return mov;
     }
 }
