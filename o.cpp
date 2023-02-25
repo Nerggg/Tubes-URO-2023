@@ -21,6 +21,26 @@ class ship {
 };
 void printMap(int, int, int, int);
 int input, diff, killCount = 0;
+int move(int x , int y)
+{
+    int mov;
+    cin >> mov;
+    if (x == 5 && mov == 3) {
+        cout << "Error, move is out of the map"<<endl;
+        return move (x,y);
+    } else if (x == -5 && mov == 4) {
+        cout << "Error, move is out of the map"<<endl;
+        return move (x,y);
+    } else if (y == 5 && mov == 1){
+        cout << "Error, move is out of the map"<<endl;
+        return move (x,y);
+    } else if (y==-5 && mov == 2){
+        cout << "Error, move is out of the map"<<endl;
+        return move (x,y);
+    } else {
+        return mov;
+    }
+}
 int main()
 {
     srand(time(0));
@@ -61,7 +81,8 @@ int main()
         cout << endl;
         cout << "Sekarang adalah giliran Anda. Apa yang ingin Anda lakukan?" << endl;
         cout << "[1] Bergerak maju\n[2] Bergerak mundur\n[3] Bergerak ke kanan\n[4] Bergerak ke kiri\n[5] Serang musuh\n[6] Diam di tempat\n";
-        cin >> input;
+        input = move(cakru.x, cakru.y);
+
         switch (input)
         {
             case 1:
