@@ -19,6 +19,7 @@ class ship {
         void right();
         void left();
         void updateDist(int, int);
+        bool isCrash(int, ship);
         bool isDead();
         void takeDamage(int);
 };
@@ -32,7 +33,7 @@ int main()
     cout << "Pilih tingkat kesulitan" << endl;
     cout << "[1] Mudah\n[2] Normal\n[3] Sulit\n[4] Sulit Banget\n";
     cin >> diff; // Input tingkat kesulitan
-    
+
     // Isi semua data objek berdasarkan tingkat kesulitan
 
     if (diff == 1)
@@ -62,7 +63,7 @@ int main()
         system("cls"); // Clear screen
         cakru.updateDist(musuh.x, musuh.y); // Update posisi cakru
         musuh.updateDist(cakru.x, cakru.y); // Update posisi musuh
-        
+
         // Print map sederhana
 
         printMap(cakru.x, cakru.y, musuh.x, musuh.y);
@@ -72,8 +73,21 @@ int main()
         cout << endl;
         cout << "Sekarang adalah giliran Anda. Apa yang ingin Anda lakukan?" << endl;
         cout << "[1] Bergerak maju\n[2] Bergerak mundur\n[3] Bergerak ke kanan\n[4] Bergerak ke kiri\n[5] Serang musuh\n[6] Diam di tempat\n";
-
-        cin >> input;   // Input action yang akan dilakukan cakru
+        cin >> input;
+        while (cakru.isCrash(input,musuh) == true)
+        {
+            system("cls");
+            printMap(cakru.x, cakru.y, musuh.x, musuh.y);
+            cakru.output();
+            cout << endl;
+            musuh.output();
+            cout << endl;
+            cout << "Sekarang adalah giliran Anda. Apa yang ingin Anda lakukan?" << endl;
+            cout << "[1] Bergerak maju\n[2] Bergerak mundur\n[3] Bergerak ke kanan\n[4] Bergerak ke kiri\n[5] Serang musuh\n[6] Diam di tempat\n";
+            cin >> input;
+        }
+        switch (input)
+            cin >> input;   // Input action yang akan dilakukan cakru
         switch (input)  // Lakukan action sesuai input action
         {
             case 1: // Bila dipilih 1, maka cakru akan maju
@@ -233,6 +247,42 @@ void ship::right()
 void ship::left()
 {
     x-=1;
+}
+
+bool ship::isCrash(int move, ship musuh)
+{
+    switch(move)
+    {
+        case 1:
+            if (y+1 == musuh.y && x == musuh.x)
+            {
+                cout << "Kapal tidak bisa maju karena akan menabrak kapal musuh!" << endl;
+                system("pause");
+                return true;
+            }
+        case 2:
+            if (y-1 == musuh.y && x == musuh.x)
+            {
+                cout << "Kapal tidak bisa mundur karena akan menabrak kapal musuh!" << endl;
+                system("pause");
+                return true;
+            }
+        case 3:
+            if (x+1 == musuh.x && y == musuh.y)
+            {
+                cout << "Kapal tidak bisa ke kanan karena akan menabrak kapal musuh!" << endl;
+                system("pause");
+                return true;
+            }
+        case 4:
+            if (x-1 == musuh.x && y == musuh.y)
+            {
+                cout << "Kapal tidak bisa ke kiri karena akan menabrak kapal musuh!" << endl;
+                system("pause");
+                return true;
+            }
+    }
+    return false;
 }
 
 // Mengecek apakah kapal sudah mati atau belum dengan melihat jumlah health, jika health <= 0 maka True.
